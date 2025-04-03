@@ -14,10 +14,7 @@
             </div>
             <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Password:  </label>
-                <input [ngClass]="{'is-invalid': hasError('password','required') || hasError('password','minlength')}"
-                type="password" class="form-control" id="Password" formControlName="password">
-                <div class="text-danger" *ngIf="hasError('password','required')">Contraseña requerida.</div>
-                <div class="text-danger" *ngIf="hasError('password','minlength')">Contraseña inválida, tiene menos de 8 carácteres.</div>
+                <input type="password" class="form-control" id="Password" formControlName="password">
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
             <button (click)="loginWithGoogle()">Iniciar sesión con Google</button>

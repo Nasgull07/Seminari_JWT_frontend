@@ -50,8 +50,8 @@ export class LoginComponent implements OnInit {
       
     });
     this.formularioLogin = this.form.group({
-      email: ['joan1234@example.com', [Validators.required, Validators.email]], // Valor predeterminado para el email
-      password: ['12345678', [Validators.required, Validators.minLength(8)]] // Valor predeterminado para la contraseña
+      email: ['user@gmasail.com', [Validators.required, Validators.email]], // Valor predeterminado para el email
+      password: ['dededededeeedd', [Validators.required, Validators.minLength(8)]] // Valor predeterminado para la contraseña
     });
   };
 
@@ -71,6 +71,9 @@ export class LoginComponent implements OnInit {
       next: (response) => {
         console.log('Login exitoso:', response);
         localStorage.setItem('access_token', response.token);
+        localStorage.setItem('refresh_token', response.refreshToken);
+        console.log('Token guardado en localStorage:', response.token);
+        console.log('Refresh token guardado en localStorage:', response.refreshToken);
         this.exportLoggedIn.emit(true);
       },
       error: (error) => {
@@ -78,6 +81,8 @@ export class LoginComponent implements OnInit {
         alert('Error en el login, verifica tus credenciales');
       }
     });
+
+    
   }
   loginWithGoogle(): void {
     this.authService.loginWithGoogle();
